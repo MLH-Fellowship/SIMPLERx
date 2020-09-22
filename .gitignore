@@ -1,0 +1,12 @@
+# venv
+bin/
+include/
+lib/
+share/
+*.cfg
+
+# Windows
+Thumbs.db
+
+# MacOS
+.DS_Store

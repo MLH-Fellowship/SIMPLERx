@@ -6,6 +6,10 @@ lib64/
 share/
 *.cfg
 
+# Python
+__pycache__
+*.pyc
+
 # Windows
 Thumbs.db
 

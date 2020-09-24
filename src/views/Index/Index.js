@@ -1,9 +1,11 @@
 import React, { Component } from "react"
 // import logo from '../../components/Logo/logo.svg';
-
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
+import Doctor from '../../components/Doctor/Doctor'
 import Header from '../../components/Header/Header';
 import Content from './Content';
 import Footer from '../../components/Footer/Footer';
+import Nav from '../../components/Nav/Nav'
 
 class Index extends Component {
     render() {
@@ -24,12 +26,19 @@ class Index extends Component {
             // </a>
             //         </header>
             //     </div >
+            
             <div class="main-container">
-                <Header />
+                <Nav />
                 <Content />
                 <Footer />
-            </div>
+                <div>
+                    <Router>
+                        <Route path='/doctor' component={Doctor}/>
+                    </Router>
+                </div>
 
+            </div>
+            
         )
     }
 }

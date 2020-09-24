@@ -1,10 +1,13 @@
 import React from "react"
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
+import Doctor from '../Doctor/Doctor'
+
 
 function Nav() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light static-top header-a">
             <div className="container nav-container">
-                <a className="navbar-brand brand" href="#">SimpleRx</a>
+                <a className="navbar-brand brand" href="/">SimpleRx</a>
 
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -23,9 +26,23 @@ function Nav() {
                                 <a className="dropdown-item" href="#">Something else here</a>
                             </div>
                         </li> */}
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Doctor <span className="sr-only">(current)</span></a>
-                        </li>
+                        {/* <Router>                         */}
+                            
+                        
+                        {/* <li className="nav-item active">
+                            <a className="nav-link" href="/doctor">Doctor <span className="sr-only">(current)</span></a>
+                        </li> */}
+                        <Router>
+                            <Link to="/doctor">Doctor</Link>
+                        </Router>
+                        {/* <Link to="/doctor">
+                            <li className="nav-item active">
+                                Doctor <span className="sr-only">(current)</span>
+                            </li>
+                        </Link>
+                        <Route path="/doctor" component={Doctor}></Route>
+                        </Router> */}
+                        
                         
                         <li className="nav-item active">
                             <a className="nav-link" href="#">Patient <span className="sr-only">(current)</span></a>

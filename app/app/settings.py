@@ -84,10 +84,9 @@ DATABASES = {
         'default': {
         'ENGINE': 'djongo',
         'NAME': db_name,
-        'HOST': f'mongodb+srv://{username}:{password}@simplerx.3fs5z.mongodb.net/{db_name}?retryWrites=true&w=majority',
-        'USER': username,
-        'PASSWORD': password,
-         "authMechanism": "SCRAM-SHA-1"
+        'CLIENT': {
+        'host': f'mongodb+srv://{username}:{password}@simplerx.3fs5z.mongodb.net/{db_name}?retryWrites=true&w=majority&ssl=true&ssl_cert_reqs=CERT_NONE'
+        }
     }
 }
 

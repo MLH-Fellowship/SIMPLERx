@@ -9,8 +9,7 @@ function NavBar(){
                 <Link to="/" style={{float:"left", fontSize:24, fontFamily:"monospace"}}>SimpleRx</Link>
                 <Link to="/patient">Patient</Link>
                 <Link to="/pharmacist">Pharmacist</Link>
-                <Link to="/doctor">Doctor</Link>
-                
+                <Link to="/doctor">Doctor</Link>                
             </ul>
         </nav>
     </div>)

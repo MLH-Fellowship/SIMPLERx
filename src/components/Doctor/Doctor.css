@@ -1,0 +1,13 @@
+.upper{
+    background-color:rgb(37, 37, 37);
+    opacity:0.8;
+    /* margin-top: 15%;
+    margin-bottom: 2%;
+    margin-left: 15%;
+    margin-right: 15%; */
+    margin: 5% 25% 2% 25%;
+    padding: 2%;
+    color: rgb(255, 255, 255);
+    justify-content: stretch;
+    text-align: left;
+}

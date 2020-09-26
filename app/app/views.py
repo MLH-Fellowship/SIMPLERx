@@ -29,14 +29,27 @@ def signup(request):
     else:
         try:
             credentials = json.loads(request.body.decode('utf-8'))
-            validate(credentials['uid'], credentials['password'])
-            return HttpResponse()
+            if not if_new_id(credentials['uid']):
+                response = HttpResponse(
+                    status=HTTPStatus.BAD_REQUEST,
+                    content='{"error": "UID already exists."}',
+                    content_type='application/json')
+            else:
+                # actually create in db
+                response = HttpResponse(status=HTTPStatus.CREATED)
+            return response
         except:
             return HttpResponse(status=HTTPStatus.BAD_REQUEST)
 
 
 def validate(uid, password):
-    if uid == 'admin' and password == 'password':
+    if not if_new_uid(uid) and password == 'password':
         return True
     else:
         return False
+
+def if_new_uid(uid):
+    if uid != 'admin':  # check UID in database
+        return False
+    else:
+        return True

@@ -33,11 +33,31 @@ def signup(request):
             credentials = json.loads(request.body.decode('utf-8'))
             if not new_uid(credentials['uid']):
                 response = HttpResponseBadRequest(
-                    content='{"error": "UID already exists."}',
+                    content='{"OldUIDError": "UID already exists."}',
                     content_type='application/json; charset=utf-8')
             else:
                 # actually create in db
                 response = HttpResponse(status=HTTPStatus.CREATED)
+            return response
+        except:
+            return HttpResponse(status=HTTPStatus.BAD_REQUEST)
+
+def add_prescription(request):
+    if request.method != 'POST':
+        return HttpResponseNotAllowed(['POST'])
+    else:
+        try:
+            if validate_session(request):
+                new_prescription = json.loads(request.body.decode('utf-8'))
+                if new_uid(new_prescription['uid']):
+                    response = HttpResponseBadRequest(
+                    content='{"UnknownUIDError": "UID does not exist in database."}',
+                    content_type='application/json; charset=utf-8')
+                else:
+                    # actually create in db
+                    response = HttpResponse(status=HTTPStatus.CREATED)
+            else:
+                response = HttpResponse(status=HTTPStatus.FORBIDDEN)
             return response
         except:
             return HttpResponse(status=HTTPStatus.BAD_REQUEST)

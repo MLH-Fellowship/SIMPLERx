@@ -85,6 +85,40 @@ def fetch_history(request):
             response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
     return response
 
+def current_prescription(request):
+    if request.method != 'POST':
+        response = HttpResponseNotAllowed(['POST'])
+    else:
+        try:
+            if validate_session(request):
+                body = json.loads(request.body.decode('utf-8'))
+                # fetch from db
+                content = '{"Prescriptions": "here"}'  # dummy content
+                response = HttpResponse(
+                    status=HTTPStatus.OK,
+                    content=content,
+                    content_type='application/json; charset=utf-8')
+            else:
+                response = HttpResponse(status=HTTPStatus.FORBIDDEN)
+        except:
+            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+    return response
+
+def mark_prescription(request):
+    if request.method != 'POST':
+        response = HttpResponseNotAllowed(['POST'])
+    else:
+        try:
+            if validate_session(request):
+                body = json.loads(request.body.decode('utf-8'))
+                # perform db action
+                response = HttpResponse()
+            else:
+                response = HttpResponse(status=HTTPStatus.FORBIDDEN)
+        except:
+            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+    return response
+
 def validate_session(request):
     try:
         uid = request.get_signed_cookie('uid', max_age=MAX_AGE)

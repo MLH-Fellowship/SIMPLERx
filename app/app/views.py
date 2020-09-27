@@ -4,6 +4,8 @@ import pymongo
 from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseBadRequest
 from passlib.hash import pbkdf2_sha256
 
+MAX_AGE = 30*24*60*60  # 30 days
+
 def index(request):
     return HttpResponse("Hello, world.")
 
@@ -15,8 +17,8 @@ def signin(request):
             credentials = json.loads(request.body.decode('utf-8'))
             if validate(credentials['uid'], credentials['password']):
                 response = HttpResponse()
-                response.set_signed_cookie('uid', credentials['uid'], max_age=30*24*60*60)
-                response.set_signed_cookie('loggedin', 'true', salt=credentials['uid'], max_age=30*24*60*60)
+                response.set_signed_cookie('uid', credentials['uid'], max_age=MAX_AGE)
+                response.set_signed_cookie('loggedin', 'true', salt=credentials['uid'], max_age=MAX_AGE)
             else:
                 response = HttpResponse(status=HTTPStatus.UNAUTHORIZED)
             return response
@@ -39,6 +41,13 @@ def signup(request):
             return response
         except:
             return HttpResponse(status=HTTPStatus.BAD_REQUEST)
+
+def validate_session(request):
+    try:
+        uid = request.get_signed_cookie('uid', max_age=MAX_AGE)
+        return request.get_signed_cookie('loggedin', salt=uid, max_age=MAX_AGE) == 'true'
+    except:
+        return False
 
 def validate(uid, password):
     if not new_uid(uid) and password == 'password':

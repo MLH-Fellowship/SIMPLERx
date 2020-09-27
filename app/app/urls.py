@@ -29,4 +29,8 @@ urlpatterns = [
     path('add_prescription/', views.add_prescription, name='add_prescription'),
     path('fetch_history', views.fetch_history, name='fetch_history'),
     path('fetch_history/', views.fetch_history, name='fetch_history'),
+    path('current_prescription', views.current_prescription, name='current_prescription'),
+    path('current_prescription/', views.current_prescription, name='current_prescription'),
+    path('mark_prescription', views.mark_prescription, name='mark_prescription'),
+    path('mark_prescription/', views.mark_prescription, name='mark_prescription'),
 ]

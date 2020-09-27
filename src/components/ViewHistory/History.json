@@ -1,0 +1,34 @@
+[
+    {
+        "Symptoms":"cough, fever",
+        "Notes": "Viral fever",
+        "Test":"Test 2234",
+        "Furthercheckups":"None",
+        "Followupdetails":"24-05-2020",
+        "name":"Aspirin"
+        
+        
+    
+
+    },
+
+    {
+        "Symptoms":"headache ok",
+        "Notes": "concussion",
+        "Test":"Test 112",
+        "Furthercheckups":"migraine",
+        "Followupdetails":"19-11-2020",
+        "name":"Crocin"
+
+    },
+
+    {
+        "Symptoms":"nausea",
+        "Notes": "Allergy",
+        "Test":"Test 0023",
+        "Furthercheckups":"None",
+        "Followupdetails":"02-09-2020",
+        "name":"Sinarest"
+
+    }
+]

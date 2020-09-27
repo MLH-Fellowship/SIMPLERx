@@ -16,6 +16,7 @@ import WritePrescription from './components/WritePrescription/WritePrescription'
 import ShowPrescription from './components/ShowPrescription/ShowPrescription'
 import ViewHistory from './components/ViewHistory/ViewHistory'
 import WriteNewPres from './components/WriteNewPres/WriteNewPres'
+import ShowPrescriptionPharma from './components/ShowPrescriptionPharma/ShowPrescriptionPharma'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 
@@ -55,6 +56,7 @@ class App extends React.Component {
                 <Route path='/showpres' component={ShowPrescription}/>
                 <Route path='/viewhistory' component={ViewHistory}/>
                 <Route path='/writenewpres' component={WriteNewPres}/>
+                <Route path='/showprespharma' component={ShowPrescriptionPharma}/>
               </Switch>
             </div>
           </div>

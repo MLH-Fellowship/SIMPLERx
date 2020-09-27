@@ -4,7 +4,7 @@ class PatientHistory extends React.Component{
     constructor(){
         super ()
         this.state={
-            isLoading : ""
+            isLoading : false
         }
     }
     render(){
@@ -19,12 +19,12 @@ class PatientHistory extends React.Component{
             <br/>
             <br/>
             <form>
-                <label>
-                    Patient ID:
-                    <input type="text" name="UID" placeholder="PA1234"></input>
+                <label style={{marginRight:"5px"}}>
+                    Patient ID: 
                 </label>
+                <input type="text" name="UID" placeholder="Ex: PA1234"></input>
             </form><br/>
-            <Link to ='/viewhistory'>
+            <Link to ='/viewhistory' isLoading={this.state.isLoading}>
             <button>Show Records</button>
             </Link>
         </div>)

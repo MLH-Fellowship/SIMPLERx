@@ -1,15 +1,14 @@
 import React,{useState} from 'react'
 import './PharmaLogin.css'
-import PharmaDashboard from '../PharmaDashboard/PharmaDashboard'
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-import {Link,Route, BrowserRouter as Router} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 export default function Login() {
-    //const [email, setEmail] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     
     function validateForm() {
-      return password.length > 0;
+      return password.length > 0 && email.length>0;
     }
   
     function handleSubmit(event) {
@@ -19,19 +18,19 @@ export default function Login() {
     return (
       <div className="Login">
         <form onSubmit={handleSubmit}>
-          {/* <FormGroup controlId="email" bsSize="large">
-            <FormLabel>Email </FormLabel>
+        <FormGroup controlId="text" bssize="large">
+            <FormLabel>Pharmacy ID </FormLabel>
             <FormControl
               autoFocus
-              type="email"
+              type="text"
               value={email}
               onChange={e => setEmail(e.target.value)}
             />
             
-          </FormGroup> */}
+          </FormGroup>
           <br/>
           <FormGroup controlId="password" bsSize="large">
-            <FormLabel>Pharmacy ID </FormLabel>
+            <FormLabel style={{marginRight:"19px"}}>Password </FormLabel>
             
             <FormControl
               value={password}
@@ -40,18 +39,14 @@ export default function Login() {
             />
           </FormGroup>
           <br/>
-          <Link to="/pharmadashboard">
+          <Link to="/showprespharma">
           <Button block bsSize="large" disabled={!validateForm()} type="submit">
             Login
           </Button>
           </Link>
         </form>
          
-        <div>
-        <Router>
-        <Route path='/pharmadashboard' component={PharmaDashboard} />
-        </Router>
-        </div>
+        
         
       </div>
     );

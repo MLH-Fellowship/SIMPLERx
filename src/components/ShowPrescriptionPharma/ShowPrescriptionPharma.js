@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Link} from 'react-router-dom'
-import Prescription from './Prescription'
+import Prescription from '../ShowPrescription/Prescription.json'
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -18,8 +18,15 @@ const useStyles = makeStyles({
 
 
 
-export default function ShowPrescription() {
+
+export default function ShowPrescriptionPharma() {
     const classes = useStyles();
+
+    useEffect(()=>{
+        console.log("YAAAY")
+    })
+
+    
 
   return (
       <div>
@@ -27,8 +34,8 @@ export default function ShowPrescription() {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Medicines</TableCell>
-            
+            <TableCell>Patient ID</TableCell>
+            <TableCell align="right">Medicine</TableCell>
             <TableCell align="right">Dosage</TableCell>
             <TableCell align="right">Duration(day(s))</TableCell>
             
@@ -39,9 +46,9 @@ export default function ShowPrescription() {
           {Prescription.map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.PID}
               </TableCell>
-               
+                <TableCell align="right">{row.name}</TableCell>
                 <TableCell align="right">{row.dosage}</TableCell>
                 <TableCell align="right">{row.duration}</TableCell>
               

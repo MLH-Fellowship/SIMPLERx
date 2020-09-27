@@ -1,8 +1,7 @@
 import React,{useState} from 'react'
 import './Login.css'
-import DocDashboard from '../DocDashboard/DocDashboard'
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-import {Link,Route, BrowserRouter as Router} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 
 
@@ -10,18 +9,24 @@ export default function Login({isCorrect}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     
+    
     function validateForm() {
       return password.length > 0 && email.length>0;
     }
   
     function handleSubmit(event) {
       event.preventDefault();
+      
     }
+    
+    
+    
     
     return (
       <div className="Login">
         <h1>HELLO {isCorrect}</h1>
         <form onSubmit={handleSubmit}>
+       
           <FormGroup controlId="email" bssize="large">
             <FormLabel>Doctor ID </FormLabel>
             <FormControl
@@ -43,20 +48,23 @@ export default function Login({isCorrect}) {
             />
           </FormGroup>
           <br/>
-          <Link to="/docdashboard">
+          
+          {/* <Button block bssize="large" disabled={!validateForm()} type="submit">
+          {name === password? <Link to="/docdashboard">
+          Login
+          </Link>:
+          <Link to="/login">Login</Link>}
+          </Button> */}
+          <Link to ='/docdashboard'>
           <Button block bssize="large" disabled={!validateForm()} type="submit">
-            Login
+          Login
           </Button>
           </Link>
+          
+          
         </form>
          
-        <div>
-        <Router>
         
-        <Route path='/docdashboard' component={DocDashboard} /> 
-        
-        </Router>
-        </div>
         
       </div>
     );

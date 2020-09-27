@@ -2,6 +2,40 @@ import pymongo
 from pymongo import MongoClient
 import json
 
+# check login
+db.collection('user').findOne(
+
+    {$and: [
+        {name: req.body.username.toLowerCase()},
+        {password: req.body.password}
+    ]},
+
+    (err, result)=> {
+
+        if(err) {
+            res.status(500).send(err)
+            return
+        }
+
+        if(!result) {
+            data={
+                "meta": {
+                    "status": "fail",
+                    "message": "Login Failure: Invalid username or password"
+                }
+            }
+            res.status(401).send(data)
+        } else {
+            data={
+                "meta": {
+                    "status": "success",
+                    "message": "Login success"
+                }
+            }
+            res.json(data)
+        }
+    })
+
 cluster = MongoClient(
     "mongodb+srv://sakshi:mlhFellowship@cluster0.b8j1y.gcp.mongodb.net/medrecords?retryWrites=true&w=majority&?ssl=true&ssl_cert_reqs=CERT_NONE")
 db = cluster["medrecords"]

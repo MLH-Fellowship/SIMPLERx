@@ -11,7 +11,7 @@ def index(request):
 
 def signin(request):
     if request.method != 'POST':
-        return HttpResponseNotAllowed(['POST'])
+        response = HttpResponseNotAllowed(['POST'])
     else:
         try:
             credentials = json.loads(request.body.decode('utf-8'))
@@ -21,13 +21,13 @@ def signin(request):
                 response.set_signed_cookie('loggedin', 'true', salt=credentials['uid'], max_age=MAX_AGE)
             else:
                 response = HttpResponse(status=HTTPStatus.UNAUTHORIZED)
-            return response
         except:
-            return HttpResponse(status=HTTPStatus.BAD_REQUEST)
+            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+    return response
 
 def signup(request):
     if request.method != 'POST':
-        return HttpResponseNotAllowed(['POST'])
+        response = HttpResponseNotAllowed(['POST'])
     else:
         try:
             credentials = json.loads(request.body.decode('utf-8'))
@@ -38,13 +38,13 @@ def signup(request):
             else:
                 # actually create in db
                 response = HttpResponse(status=HTTPStatus.CREATED)
-            return response
         except:
-            return HttpResponse(status=HTTPStatus.BAD_REQUEST)
+            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+    return response
 
 def add_prescription(request):
     if request.method != 'POST':
-        return HttpResponseNotAllowed(['POST'])
+        response = HttpResponseNotAllowed(['POST'])
     else:
         try:
             if validate_session(request):
@@ -58,9 +58,9 @@ def add_prescription(request):
                     response = HttpResponse(status=HTTPStatus.CREATED)
             else:
                 response = HttpResponse(status=HTTPStatus.FORBIDDEN)
-            return response
         except:
-            return HttpResponse(status=HTTPStatus.BAD_REQUEST)
+            response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
+    return response
 
 def validate_session(request):
     try:

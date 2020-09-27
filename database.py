@@ -2,15 +2,21 @@ import pymongo
 from pymongo import MongoClient
 import json
 
+cluster = MongoClient(
+    "mongodb+srv://sakshi:mlhFellowship@cluster0.b8j1y.gcp.mongodb.net/medrecords?retryWrites=true&w=majority&?ssl=true&ssl_cert_reqs=CERT_NONE")
+db = cluster["medrecords"]
+patientCollection = db["patient"]
+
+
 # check login
 db.collection('user').findOne(
 
-    {$and: [
+    {$and : [
         {name: req.body.username.toLowerCase()},
         {password: req.body.password}
     ]},
 
-    (err, result)=> {
+    (err, result)= > {
 
         if(err) {
             res.status(500).send(err)
@@ -36,10 +42,6 @@ db.collection('user').findOne(
         }
     })
 
-cluster = MongoClient(
-    "mongodb+srv://sakshi:mlhFellowship@cluster0.b8j1y.gcp.mongodb.net/medrecords?retryWrites=true&w=majority&?ssl=true&ssl_cert_reqs=CERT_NONE")
-db = cluster["medrecords"]
-patientCollection = db["patient"]
 
 # Old code for individual variables
 # Name = "Sakshi R"

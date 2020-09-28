@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 
 
-export default function Login({isCorrect}) {
+export default function Login({sendData}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     
@@ -19,12 +19,13 @@ export default function Login({isCorrect}) {
       
     }
     
-    
-    
+    function onClick(){
+      sendData(email)
+    }
     
     return (
       <div className="Login">
-        <h1>HELLO {isCorrect}</h1>
+        
         <form onSubmit={handleSubmit}>
        
           <FormGroup controlId="email" bssize="large">
@@ -56,7 +57,7 @@ export default function Login({isCorrect}) {
           <Link to="/login">Login</Link>}
           </Button> */}
           <Link to ='/docdashboard'>
-          <Button block bssize="large" disabled={!validateForm()} type="submit">
+          <Button block bssize="large" disabled={!validateForm()} type="submit" onClick={onClick}>
           Login
           </Button>
           </Link>

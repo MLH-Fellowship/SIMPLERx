@@ -2,8 +2,9 @@ import React,{useState} from 'react'
 import './PharmaLogin.css'
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import {Link} from 'react-router-dom'
+//import { propTypes } from 'react-bootstrap/esm/Image';
 
-export default function Login() {
+export default function Login({sendData}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     
@@ -12,9 +13,16 @@ export default function Login() {
     }
   
     function handleSubmit(event) {
-        event.preventDefault();    
+        event.preventDefault();
+        
     }
-  
+    
+    function handleClick(){
+      sendData(email)
+    }
+    
+
+
     return (
       <div className="Login">
         <form onSubmit={handleSubmit}>
@@ -29,7 +37,7 @@ export default function Login() {
             
           </FormGroup>
           <br/>
-          <FormGroup controlId="password" bsSize="large">
+          <FormGroup controlId="password" bssize="large">
             <FormLabel style={{marginRight:"19px"}}>Password </FormLabel>
             
             <FormControl
@@ -40,11 +48,12 @@ export default function Login() {
           </FormGroup>
           <br/>
           <Link to="/showprespharma">
-          <Button block bsSize="large" disabled={!validateForm()} type="submit">
+          <Button block bssize="large" disabled={!validateForm()} type="submit" onClick={handleClick}>
             Login
           </Button>
           </Link>
         </form>
+        
          
         
         

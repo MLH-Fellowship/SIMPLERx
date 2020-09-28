@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 
 
 
-export default function ShowPrescriptionPharma() {
+export default function ShowPrescriptionPharma({data}) {
     const classes = useStyles();
 
     useEffect(()=>{
@@ -60,6 +60,9 @@ export default function ShowPrescriptionPharma() {
         <Link to = '/'>
              <button>Home</button>
          </Link>
+         <h2>
+             the pharma id is {data}
+         </h2>
     </div>
     
   );

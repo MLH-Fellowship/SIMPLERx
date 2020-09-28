@@ -27,10 +27,39 @@ class App extends React.Component {
   constructor(){
     super ();
     this.state = {
-      isCorrect: "DOCTOR"
+      isCorrect: "DOCTOR",
+      pharmaId:"",
+      pharmaPassword:"",
+      docId:"",
+      docPassword:"",
+      patId:"",
+      patPassword:""
     }
+
+    this.getPharmaLogin = this.getPharmaLogin.bind(this)
+    this.getPatientLogin = this.getPatientLogin.bind(this)
+    this.getDoctorLogin = this.getDoctorLogin.bind(this)
+    
+  }
+  getPharmaLogin(pharmaId,pharmaPassword){
+      this.setState({
+        pharmaId:pharmaId
+      })
   }
 
+  getDoctorLogin(docId,docPassword){
+    this.setState({
+      docId:docId
+    })
+  }
+  
+  getPatientLogin(patId,patPassword){
+    this.setState({
+      patId:patId
+    })
+  }
+
+  
   
   render(){
     
@@ -45,20 +74,21 @@ class App extends React.Component {
                 <Route path="/doctor" component={Doctor} />
                 <Route path="/patient" component={Patient} />
                 <Route path="/pharmacist" component={Pharmacist} />
-                <Route path='/login'><Login isCorrect={this.state.isCorrect} /></Route>
-                <Route path='/patlogin' component={PatLogin}/>
-                <Route path='/pharmalogin' component={PharmaLogin} />
-                <Route path='/docdashboard' component={DocDashboard} />
-                <Route path='/patdashboard' component={PatDashboard} />
+                <Route path='/login'><Login sendData={this.getDoctorLogin} /></Route>
+                <Route path='/patlogin'><PatLogin sendData={this.getPatientLogin}/></Route>
+                <Route path='/pharmalogin'><PharmaLogin sendData={this.getPharmaLogin}/></Route>
+                <Route path='/docdashboard'><DocDashboard data={this.state.docId}/></Route>
+                <Route path='/patdashboard'><PatDashboard data={this.state.patId}/></Route>
                 <Route path='/pharmadashboard' component={PharmaDashboard}/>
                 <Route path='/patienthistory' component={PatientHistory}/>
                 <Route path='/writepres' component={WritePrescription} />
                 <Route path='/showpres' component={ShowPrescription}/>
                 <Route path='/viewhistory' component={ViewHistory}/>
                 <Route path='/writenewpres' component={WriteNewPres}/>
-                <Route path='/showprespharma' component={ShowPrescriptionPharma}/>
+                <Route path='/showprespharma'><ShowPrescriptionPharma data={this.state.testData} /></Route>
               </Switch>
             </div>
+            
           </div>
         </Router>
     

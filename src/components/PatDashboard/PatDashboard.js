@@ -1,11 +1,12 @@
 import React from 'react'
 
-class PatDashboard extends React.Component{
-    render(){
+function PatDashboard({data}){
+    
         return (<div>
+            <h1>HELLO {data}</h1>
             <h2>THIS IS PATIENT DASHBOARD</h2>
         </div>)
-    }
+    
 }
 
 export default PatDashboard

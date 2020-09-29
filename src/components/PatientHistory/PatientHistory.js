@@ -1,15 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 class PatientHistory extends React.Component{
-    constructor(){
-        super ()
-        this.state={
-            isLoading : false
-        }
-    }
+    
     render(){
         return (<div>
-             <h1>this is doc dash</h1>
+             
             <Link to ='/patienthistory'>
             <button>History</button>
             </Link>
@@ -24,7 +19,7 @@ class PatientHistory extends React.Component{
                 </label>
                 <input type="text" name="UID" placeholder="Ex: PA1234"></input>
             </form><br/>
-            <Link to ='/viewhistory' isLoading={this.state.isLoading}>
+            <Link to ='/viewhistory'>
             <button>Show Records</button>
             </Link>
         </div>)

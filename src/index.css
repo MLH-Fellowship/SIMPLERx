@@ -8,6 +8,10 @@ body {
   background-image: url("./background.png");
   background-size: 100%;
 }
+a {
+  color: rgb(24, 23, 23);
+  text-decoration: none;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

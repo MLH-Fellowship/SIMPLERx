@@ -33,13 +33,14 @@ class App extends React.Component {
       docId:"",
       docPassword:"",
       patId:"",
-      patPassword:""
+      patPassword:"",
+      presId:""
     }
 
     this.getPharmaLogin = this.getPharmaLogin.bind(this)
     this.getPatientLogin = this.getPatientLogin.bind(this)
     this.getDoctorLogin = this.getDoctorLogin.bind(this)
-    
+    this.getPrescriptionId = this.getPrescriptionId.bind(this)
   }
   getPharmaLogin(pharmaId,pharmaPassword){
       this.setState({
@@ -59,6 +60,15 @@ class App extends React.Component {
     })
   }
 
+  getPrescriptionId(presId){
+    this.setState({
+      presId:presId
+    })
+    
+  }
+  
+    
+  
   
   
   render(){
@@ -68,6 +78,7 @@ class App extends React.Component {
         <Router>
           <div className="App">
             <NavBar />
+            
             <div>
               <Switch>
                 <Route exact path="/" component={SimpleCard}/>
@@ -81,11 +92,11 @@ class App extends React.Component {
                 <Route path='/patdashboard'><PatDashboard data={this.state.patId}/></Route>
                 <Route path='/pharmadashboard' component={PharmaDashboard}/>
                 <Route path='/patienthistory' component={PatientHistory}/>
-                <Route path='/writepres' component={WritePrescription} />
-                <Route path='/showpres' component={ShowPrescription}/>
+                <Route path='/writepres'><WritePrescription sendData={this.getPrescriptionId}/></Route>
+                <Route path='/showpres'><ShowPrescription data={this.state.presId}/></Route>
                 <Route path='/viewhistory' component={ViewHistory}/>
                 <Route path='/writenewpres' component={WriteNewPres}/>
-                <Route path='/showprespharma'><ShowPrescriptionPharma data={this.state.testData} /></Route>
+                <Route path='/showprespharma'><ShowPrescriptionPharma data={this.state.pharmaId} /></Route>
               </Switch>
             </div>
             

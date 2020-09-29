@@ -30,6 +30,9 @@ export default function ShowPrescriptionPharma({data}) {
 
   return (
       <div>
+      <h2>
+             Hello {data}
+         </h2>
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
@@ -57,12 +60,11 @@ export default function ShowPrescriptionPharma({data}) {
         </TableBody>
       </Table>
     </TableContainer>
+    <br/>
         <Link to = '/'>
              <button>Home</button>
          </Link>
-         <h2>
-             the pharma id is {data}
-         </h2>
+         
     </div>
     
   );

@@ -1,33 +1,37 @@
 import React from 'react'
-import Login from '../Login/Login'
 import './Doctor.css'
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
-import { Button } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+      '& > *': {
+        margin: theme.spacing(1),
+      },
+    },
+  }));
 
 
 export default function Doctor(){
+    const classes = useStyles();
     return(<div>
         
-       <h3 className="upper">Hello Doctor! <br/> You can perform many tasks over here<br/>
-       You can do<br/>1. X<br/>2. Y<br/>3. Z
-       <br/>To get started please click on "login" below and enter your Unique ID</h3>
+       <h3 className="upper">Hello Doctor! <br/> Welcome to SimpleRx <br/><br/>
+       Actions:<br/> <br/>1. Check medical history of the patient<br/>2. Prescribe medication to old/new patient<br/><br/>(For new patient history will be tracked from this appointment onwards)
+       <br/><br/>To get started please click on "login" below and enter your Unique ID</h3>
 
 
 
 
         {/*This is the linking part*/}
-        <Link to="/login">
+        {/* <Link to="/login">
             <Button style={{ backgroundColor:"rgb(37,37,37)" ,color:"white", fontSize:20}}>
                 login
             </Button>
-        </Link>
-        <Router>
-        <div>
-            <Switch>
-                <Route path='/login' component={Login}/>
-            </Switch>
+        </Link> */}
+        <div className={classes.root}>
+        <Link to="/login"><Button variant="contained">Login</Button></Link>
         </div>
-        </Router>
     </div>)
 }

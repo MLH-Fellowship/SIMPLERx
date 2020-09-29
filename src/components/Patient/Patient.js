@@ -6,8 +6,8 @@ import {Button} from 'react-bootstrap'
 
 export default function Patient(){
     return (<div>
-        <h3 className="upper">Hello User! <br/> You can perform many tasks over here<br/>
-       You can do<br/>1. X<br/>2. Y<br/>3. Z
+        <h3 className="upper">Hello there! <br/>Welcome to SimpleRx!<br/><br/>
+        Experience the ease of going paperless into your next appointment!<br/>
        <br/>To get started please click on "login" below and enter your Unique ID</h3>
 
 

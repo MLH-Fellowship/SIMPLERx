@@ -18,11 +18,12 @@ const useStyles = makeStyles({
 
 
 
-export default function ShowPrescription() {
+export default function ShowPrescription({data}) {
     const classes = useStyles();
 
   return (
-      <div>
+      <div style={{marginRight:"100px",marginLeft:"100px"}}>
+      <h2>Prescription of Patient ID: {data}</h2>
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
@@ -50,6 +51,7 @@ export default function ShowPrescription() {
         </TableBody>
       </Table>
     </TableContainer>
+    <br/>
         <Link to = '/'>
              <button>Home</button>
          </Link>

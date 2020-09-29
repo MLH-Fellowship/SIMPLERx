@@ -7,8 +7,8 @@ import {Button} from 'react-bootstrap'
 class Pharmacist extends Component{
     render(){
         return (<div>
-            <h3 className="upper">Hello Pharmacist! <br/> You can perform many tasks over here<br/>
-            You can do<br/>1. X<br/>2. Y<br/>3. Z
+            <h3 className="upper">Hello There! <br/> Welcome to SimpleRx!<br/><br/>
+            Keep a track of prescriptions cuz customers can't read it anyway<br/>
             <br/>To get started please click on "login" below and enter your Unique ID</h3>
 
 

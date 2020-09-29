@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import './WritePrescription.css'
 
 class WritePrescription extends React.Component{
+   
     state = {
         med : [{name:"",dosage:"",duration:""}],
         UID:"",
@@ -12,12 +13,13 @@ class WritePrescription extends React.Component{
         followup:""
         
     }
+    
     handleChange=(e)=>{
         if(["name", "dosage", "duration"].includes(e.target.className)){
             let med = [...this.state.med]
 
             med[e.target.dataset.id][e.target.className] = e.target.value.toUpperCase()
-            this.setState({med},()=>console.log(this.state.med))
+            //this.setState({med},()=>console.log(this.state.med))
         }
         else{
             this.setState({[e.target.name]:e.target.value})
@@ -32,10 +34,18 @@ class WritePrescription extends React.Component{
     }
     handleSubmit = (e)=>{
         e.preventDefault()
+        console.log("submit")
+    }
+
+    handleClick=()=>{
+       var id = this.state.UID
+       
+       this.props.sendData(id)
     }
 
     
     render(){
+        
         let {med} = this.state
         return (<div>
             <h1>THIS IS PAGE FOR EXISTING PATIENT'S PRESCRIPTION</h1>
@@ -82,7 +92,8 @@ class WritePrescription extends React.Component{
             }
             <br/>
             <Link to='/showpres'>
-            <input type="submit" value='Submit'></input>
+            {/* <input type="submit" value='Submit'></input> */}
+            <button type="submit" onClick={this.handleClick}>Submit</button>
             </Link>
             
 

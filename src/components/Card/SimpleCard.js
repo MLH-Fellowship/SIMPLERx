@@ -42,13 +42,13 @@ function SimpleCard(){
                 Word of the Day
               </Typography>
               <Typography variant="h3" component="h2">
-                Forget about your papers
+                Forget your papers
               </Typography>
               <Typography className={classes.pos} color="textSecondary">
                 adjective
               </Typography>
               <Typography variant="h5" component="p">
-                Your one-time stop for all medical records and prescriptions.
+                This is my 0 creativity tagline before my team comes up with something cool
                 <br />
                 To get started, click on your role on the top right :)
                 {/* {'"a benevolent smile"'} */}

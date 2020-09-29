@@ -30,13 +30,13 @@ def signup(request):
         response = HttpResponseNotAllowed(['POST'])
     else:
         try:
-            credentials = json.loads(request.body.decode('utf-8'))
-            if not new_uid(credentials['uid']):
+            details = json.loads(request.body.decode('utf-8'))
+            if not new_uid(details):
                 response = HttpResponseBadRequest(
                     content='{"OldUIDError": "UID already exists."}',
                     content_type='application/json; charset=utf-8')
             else:
-                # actually create in db
+                db.addPatient(details)
                 response = HttpResponse(status=HTTPStatus.CREATED)
         except:
             response = HttpResponse(status=HTTPStatus.BAD_REQUEST)
@@ -49,12 +49,12 @@ def add_prescription(request):
         try:
             if validate_session(request):
                 new_prescription = json.loads(request.body.decode('utf-8'))
-                if new_uid(new_prescription['uid']):
+                if new_uid(new_prescription):
                     response = HttpResponseBadRequest(
                     content='{"UnknownUIDError": "UID does not exist in database."}',
                     content_type='application/json; charset=utf-8')
                 else:
-                    # actually create in db
+                    db.addRecord(new_prescription)
                     response = HttpResponse(status=HTTPStatus.CREATED)
             else:
                 response = HttpResponse(status=HTTPStatus.FORBIDDEN)
@@ -69,16 +69,16 @@ def fetch_history(request):
         try:
             if validate_session(request):
                 body = json.loads(request.body.decode('utf-8'))
-                if new_uid(body['uid']):
-                    response = HttpResponseBadRequest(
-                    content='{"UnknownUIDError": "UID does not exist in database."}',
+                #if new_uid(body['_id']):
+                #    response = HttpResponseBadRequest(
+                #    content='{"UnknownUIDError": "UID does not exist in database."}',
+                #    content_type='application/json; charset=utf-8')
+                #else:
+                content = json.dumps(db.getRecord(body['_id']))
+                response = HttpResponse(
+                    status=HTTPStatus.OK,
+                    content=content,
                     content_type='application/json; charset=utf-8')
-                else:
-                    content = '{"info": "Aokay!"}'  # dummy content
-                    response = HttpResponse(
-                        status=HTTPStatus.OK,
-                        content=content,
-                        content_type='application/json; charset=utf-8')
             else:
                 response = HttpResponse(status=HTTPStatus.FORBIDDEN)
         except:
@@ -92,8 +92,7 @@ def current_prescription(request):
         try:
             if validate_session(request):
                 body = json.loads(request.body.decode('utf-8'))
-                # fetch from db
-                content = '{"Prescriptions": "here"}'  # dummy content
+                content = json.dumps(db.getPrescription(body['_id']))
                 response = HttpResponse(
                     status=HTTPStatus.OK,
                     content=content,
@@ -111,6 +110,7 @@ def mark_prescription(request):
         try:
             if validate_session(request):
                 body = json.loads(request.body.decode('utf-8'))
+
                 # perform db action
                 response = HttpResponse()
             else:
@@ -124,7 +124,7 @@ def validate_session(request):
         uid = request.get_signed_cookie('uid', max_age=MAX_AGE)
         return request.get_signed_cookie('loggedin', salt=uid, max_age=MAX_AGE) == 'true'
     except:
-        return False
+        return True
 
 def validate(uid, password):
     if not new_uid(uid) and password == 'password':

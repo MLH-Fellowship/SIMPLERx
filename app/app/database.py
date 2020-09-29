@@ -1,5 +1,6 @@
 import pymongo
 import json
+import os
 from bson.objectid import ObjectId
 from pymongo import MongoClient
 from dotenv import load_dotenv
@@ -95,7 +96,7 @@ def getRecord(PatientID):
                 "History": 1,
                 "_id": 0
                 }):
-        print(x)
+        return x
 
 
 # Test function: getRecord("PA1234")
@@ -109,4 +110,4 @@ def getPrescription(PatientID):
                 "Prescription": 1,
                 "_id": 0
                 }):
-        print(x)
+        return x

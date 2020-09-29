@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 username = os.getenv('DB_USERNAME')
 password = os.getenv('DB_PASSWORD')
 db_name = os.getenv('DB_NAME')
-DATABASES = {
+'''DATABASES = {
         'default': {
         'ENGINE': 'djongo',
         'NAME': db_name,
@@ -87,7 +87,7 @@ DATABASES = {
         'host': f'mongodb+srv://{username}:{password}@simplerx.3fs5z.mongodb.net/{db_name}?retryWrites=true&w=majority&ssl=true&ssl_cert_reqs=CERT_NONE'
         }
     }
-}
+}'''
 
 
 # Password validation

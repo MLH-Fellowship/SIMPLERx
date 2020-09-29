@@ -30,7 +30,7 @@ $ npm start
 You should be good to go! 🚀
 
 ## 🤼 About
-This project was built by Rohan Rout, Sakshi Rambhia and Ankit Maity. 👷
+This project was built by [Rohan Rout](https://github.com/routrohan), [Sakshi Rambhia](https://github.com/Sakshi16) and [Ankit Maity](https://github.com/QEDK). 👷
 
 ### ⚛️🐍 Tech-stack
 This project was made with a ReactJS frontend, a Django backend, backed by a MongoDB database.

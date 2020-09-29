@@ -1,8 +1,8 @@
 from http import HTTPStatus
 import json
-import pymongo
 from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseBadRequest
 from passlib.hash import pbkdf2_sha256
+from . import database as db
 
 MAX_AGE = 30*24*60*60  # 30 days
 

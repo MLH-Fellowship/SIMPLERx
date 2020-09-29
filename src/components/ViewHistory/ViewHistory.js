@@ -150,9 +150,23 @@ for(i =0; i<FinalHistory.length; i++){
 
 
 export default function ViewHistory() {
+
+  function refreshPage(){
+    window.location.reload(false);
+  }
   const classes = useStyles();
   return (
-    <div style={{margin:"100px"}}>
+    <>
+    <div className={classes.root} style={{float:"left"}}>
+          <Link to ='/writepres'>
+            <Button variant="contained" color="primary">Add Entry</Button>&nbsp;&nbsp;
+          </Link>
+          <Button variant="contained" color="primary" onClick={refreshPage}>Check Another</Button>
+      </div>
+    <div style={{margin:"8px"}}>
+
+      
+      <br/><br/><br/>
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
         <TableHead>
@@ -174,12 +188,9 @@ export default function ViewHistory() {
     </TableContainer>
     <br/>
          
-      <div className={classes.root}>
-          <Link to ='/writepres'>
-            <Button variant="contained" color="primary">Prescribe</Button>
-          </Link>
-      </div>
+      
     </div>
+    </>
   );
 }
 

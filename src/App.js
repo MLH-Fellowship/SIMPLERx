@@ -40,7 +40,7 @@ class App extends React.Component {
     this.getPharmaLogin = this.getPharmaLogin.bind(this)
     this.getPatientLogin = this.getPatientLogin.bind(this)
     this.getDoctorLogin = this.getDoctorLogin.bind(this)
-    this.getPrescriptionId = this.getPrescriptionId.bind(this)
+    //this.getPrescriptionId = this.getPrescriptionId.bind(this)
   }
   getPharmaLogin(pharmaId,pharmaPassword){
       this.setState({
@@ -54,18 +54,18 @@ class App extends React.Component {
     })
   }
   
-  getPatientLogin(patId,patPassword){
+  getPatientLogin(patId){
     this.setState({
       patId:patId
     })
   }
 
-  getPrescriptionId(presId){
-    this.setState({
-      presId:presId
-    })
+  // getPrescriptionId(presId){
+  //   this.setState({
+  //     presId:presId
+  //   })
     
-  }
+  // }
   
     
   
@@ -78,7 +78,6 @@ class App extends React.Component {
         <Router>
           <div className="App">
             <NavBar />
-            
             <div>
               <Switch>
                 <Route exact path="/" component={SimpleCard}/>
@@ -88,11 +87,11 @@ class App extends React.Component {
                 <Route path='/login'><Login sendData={this.getDoctorLogin} /></Route>
                 <Route path='/patlogin'><PatLogin sendData={this.getPatientLogin}/></Route>
                 <Route path='/pharmalogin'><PharmaLogin sendData={this.getPharmaLogin}/></Route>
-                <Route path='/docdashboard'><DocDashboard data={this.state.docId}/></Route>
+                <Route path='/docdashboard'><DocDashboard sendData={this.getPatientLogin}/></Route>
                 <Route path='/patdashboard'><PatDashboard data={this.state.patId}/></Route>
                 <Route path='/pharmadashboard' component={PharmaDashboard}/>
                 <Route path='/patienthistory' component={PatientHistory}/>
-                <Route path='/writepres'><WritePrescription sendData={this.getPrescriptionId}/></Route>
+                <Route path='/writepres'><WritePrescription data={this.state.patId}/></Route>
                 <Route path='/showpres'><ShowPrescription data={this.state.presId}/></Route>
                 <Route path='/viewhistory' component={ViewHistory}/>
                 <Route path='/writenewpres' component={WriteNewPres}/>

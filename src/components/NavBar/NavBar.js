@@ -59,7 +59,7 @@ function SimpleDialog(props) {
           </ListItem>
         ))} */}
 
-        <Link to="/doctor">
+        <Link to="/login">
             <ListItem button onClick={() => handleListItemClick()}>
             {/* <ListItemAvatar>
               <Avatar className={classes.avatar}>

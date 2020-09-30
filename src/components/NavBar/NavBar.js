@@ -71,7 +71,7 @@ function SimpleDialog(props) {
             </ListItem>
         </Link>
 
-        <Link to="/patient">
+        <Link to="/patlogin">
         {/* eslint-disable-next-line */}
             <ListItem button button onClick={() => handleListItemClick()}>
                 {/* <ListItemAvatar>
@@ -82,7 +82,7 @@ function SimpleDialog(props) {
                 <ListItemText primary="Patient" style={{textAlign:"center"}}/>
             </ListItem>
         </Link>
-        <Link to="/pharmacist">
+        <Link to="/pharmalogin">
         {/* eslint-disable-next-line */}
             <ListItem button button onClick={() => handleListItemClick()}>
                 {/* <ListItemAvatar>
@@ -114,7 +114,7 @@ export default function NavBar() {
     const handleClickOpen = () => {
       setOpen(true);
     };
-  
+   
     const handleClose = (value) => {
       setOpen(false);
       setSelectedValue(value);
@@ -126,11 +126,16 @@ export default function NavBar() {
       <ul>
       {/* <Link to="/" style={{float:"left", fontSize:24, fontFamily:"monospace"}}>SimpleRx</Link> */}
       <div className={classes.root} style={{float:"left"}}>
-      <Link to='/'><Button size="large" variant="outlined" color="inherit">SimpleRx</Button></Link>
+      <Link to='/'><Button size="large" variant="outlined" color="black">SimpleRx</Button></Link>
       </div>
-        <Button variant="contained" color="inherit" onClick={handleClickOpen} style={{float:"right", marginRight:"20px", marginTop: "19px"}}>
-          Roles
+      
+        <Button variant="contained" size="small" color="primary" onClick={handleClickOpen} style={{float:"right", marginRight:"20px ", marginTop: "22px"}}>
+          Login
         </Button>
+
+        <a href="https://github.com/MLH-Fellowship/SIMPLERx"><Button variant="contained" size="small"  color="primary" style={{float:"right", marginRight:"20px", marginTop: "8px"}}>
+          Source Code
+        </Button></a>
         <SimpleDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
         </ul>
         </nav>

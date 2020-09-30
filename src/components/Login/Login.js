@@ -74,7 +74,7 @@ export default function Login({sendData}) {
           </Button>
           </Link> */}
           <div className={classes.root}>
-          <Link to ='/docdashboard'><Button variant="contained" disabled={!validateForm()} onClick={onClick}>Login</Button></Link>
+          <Link to ='/docdashboard'><Button variant="contained" color="primary" disabled={!validateForm()} onClick={onClick}>Login</Button></Link>
           </div>
           
         </form>

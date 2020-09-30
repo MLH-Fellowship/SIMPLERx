@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
+//import axios from 'axios'
+import {Link} from 'react-router-dom'
 //import Icon from '@material-ui/core/Icon';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -30,41 +32,39 @@ function WritePrescription({data}) {
     e.preventDefault();
     
     
-    const finalData = [
+    const finalData = 
         {
-            "PatientID":data,
+          "_id":"PA1234",
+          
+          "record":{   
             "Symptoms":symptoms,
-            "Notes":notes,
+            "Notes": notes,
             "Test":tests,
             "Furthercheckups":further,
             "Followupdetails":followup,
-            "Prescription":inputFields
+            "Precription":inputFields
+          }
 
         }
-    ]
-    //console.log(finalData);
+    
+    // const URL = 'https://69fd6781dab2.ngrok.io/signup'
+    //  axios(URL, {
+    //   method: 'POST',
+    //   headers: {
+    //     'content-type': 'application/json',
+    //   },
+    //   body: finalData
+    // })
+    //   .then(response => {console.log(response.data)})
+    //   .catch(error => {
+    //     throw error;
+    //   });
+     console.log(finalData)
+     
 
 
-
-    fetch('http://07b18aceafe1.ngrok.io/add_prescription/',{
-        method: 'POST',
-        headers:{
-            'Accept':'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: {
-            "_id":data,
-            "Symptoms":symptoms,
-            "Notes":notes,
-            "Test":tests,
-            "Furthercheckups":further,
-            "Followupdetails":followup,
-            "Prescription":inputFields
-            
-        }
-    })
-    .then(res => res.json())
-    .then(data=>console.log(data))
+    
+    
   };
 
   const handleChangeInput = (index, event) => {
@@ -94,7 +94,7 @@ function WritePrescription({data}) {
   
   
   return (
-    <Container>
+    <Container style={{backgroundColor:"white", opacity:"0.9"}}>
       <h1>Add New Member {data}</h1>
       <form className={classes.root} onSubmit={handleSubmit}>
             <TextField 
@@ -149,21 +149,21 @@ function WritePrescription({data}) {
           <div key={index}>
             <TextField 
               name="name"
-              label="First Name"
+              label="Name"
               variant="filled"
               value={inputField.firstName}
               onChange={event => handleChangeInput(index, event)}
             />
             <TextField 
               name="dosage"
-              label="Middle Name"
+              label="Dosage"
               variant="filled"
               value={inputField.middlename}
               onChange={event => handleChangeInput(index, event)}
             />
             <TextField 
               name="duration"
-              label="Last Name"
+              label="Duration"
               variant="filled"
               value={inputField.lastName}
               onChange={event => handleChangeInput(index, event)}
@@ -186,7 +186,8 @@ function WritePrescription({data}) {
           color="primary" 
           type="submit" 
           onClick={handleSubmit}
-        >Send</Button>
+        ><Link to='/showpres'>Submit</Link></Button>
+        
       </form>
     </Container>
   );

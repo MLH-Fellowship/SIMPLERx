@@ -9,6 +9,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles({
   table: {
@@ -22,14 +23,14 @@ export default function ShowPrescription({data}) {
     const classes = useStyles();
 
   return (
-      <div style={{marginRight:"100px",marginLeft:"100px"}}>
-      <h2>Prescription of Patient ID: {data}</h2>
+      <div style={{marginRight:"100px",marginLeft:"100px", marginTop: "40px"}}>
+      
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Medicines</TableCell>
-            
+            <TableCell>Patient ID: PA1234</TableCell>
+            <TableCell align="right">Medicines</TableCell>
             <TableCell align="right">Dosage</TableCell>
             <TableCell align="right">Duration(day(s))</TableCell>
             
@@ -37,9 +38,14 @@ export default function ShowPrescription({data}) {
           </TableRow>
         </TableHead>
         <TableBody>
+       
           {Prescription.map((row) => (
+            
             <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
+            <TableCell >
+                <p></p>
+              </TableCell>
+              <TableCell align="right" component="th" scope="row">
                 {row.name}
               </TableCell>
                
@@ -53,7 +59,7 @@ export default function ShowPrescription({data}) {
     </TableContainer>
     <br/>
         <Link to = '/'>
-             <button>Home</button>
+            <Button color='default' variant='contained'>Home</Button>
          </Link>
     </div>
     

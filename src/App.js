@@ -18,7 +18,7 @@ import ViewHistory from './components/ViewHistory/ViewHistory'
 import WriteNewPres from './components/WriteNewPres/WriteNewPres'
 import ShowPrescriptionPharma from './components/ShowPrescriptionPharma/ShowPrescriptionPharma'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-
+import ViewPatHistory from './components/ViewPatHistory/ViewPatHistory'
 
 
 
@@ -76,9 +76,13 @@ class App extends React.Component {
   return (
     
         <Router>
-          <div className="App">
+          <div className="App" id='particles'>
+            
             <NavBar />
+            
+           
             <div>
+            
               <Switch>
                 <Route exact path="/" component={SimpleCard}/>
                 <Route path="/doctor" component={Doctor} />
@@ -86,7 +90,7 @@ class App extends React.Component {
                 <Route path="/pharmacist" component={Pharmacist} />
                 <Route path='/login'><Login sendData={this.getDoctorLogin} /></Route>
                 <Route path='/patlogin'><PatLogin sendData={this.getPatientLogin}/></Route>
-                <Route path='/pharmalogin'><PharmaLogin sendData={this.getPharmaLogin}/></Route>
+                <Route path='/pharmalogin'><PharmaLogin sendData={this.getPatientLogin}/></Route>
                 <Route path='/docdashboard'><DocDashboard sendData={this.getPatientLogin}/></Route>
                 <Route path='/patdashboard'><PatDashboard data={this.state.patId}/></Route>
                 <Route path='/pharmadashboard' component={PharmaDashboard}/>
@@ -96,7 +100,10 @@ class App extends React.Component {
                 <Route path='/viewhistory' component={ViewHistory}/>
                 <Route path='/writenewpres' component={WriteNewPres}/>
                 <Route path='/showprespharma'><ShowPrescriptionPharma data={this.state.pharmaId} /></Route>
+                <Route path='/viewpathistory'><ViewPatHistory /></Route>
+               
               </Switch>
+              
             </div>
             
           </div>

@@ -101,7 +101,7 @@ export default function DocDashboard({sendData}) {
         <TextField id="outlined-basic" label="Patient ID" variant="outlined" style={{float:"left"}} onChange={e=>setPatId(e.target.value)} />
         <Button color="primary" variant="contained" size="large" style={{float:"left"}} onClick={handleClick}>Submit</Button>
         </form><br/><br/><br/><br/><br/>
-        {patId==="rohan" && checkNum>0?<ViewHistory/>:null}
+        {patId==="PA1234" && checkNum>0?<ViewHistory/>:null}
         
       </TabPanel>
       <TabPanel value={value} index={1}>

@@ -1,21 +1,33 @@
 import React,{useState} from 'react'
 import './PatLogin.css'
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import { FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import {Link} from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
 
 export default function Login({sendData}) {
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    // const [password, setPassword] = useState("");
+    const classes = useStyles();
     
     function validateForm() {
-      return password.length > 0;
+      return email.length > 0;
     }
   
     function handleSubmit(event) {
         event.preventDefault();    
     }
   
-    function handleClick(){
+    function onClick(){
       sendData(email)
     }
 
@@ -32,7 +44,7 @@ export default function Login({sendData}) {
             />
             
           </FormGroup>
-          <br/>
+          {/* <br/>
           <FormGroup controlId="password" bsSize="large">
             <FormLabel>Patient ID </FormLabel>
             
@@ -42,12 +54,18 @@ export default function Login({sendData}) {
               type="password"
             />
           </FormGroup>
-          <br/>
-          <Link to="/patdashboard">
+          <br/> */}
+          {/* <Link to="/patdashboard">
           <Button block bsSize="large" disabled={!validateForm()} type="submit" onClick={handleClick}>
             Login
           </Button>
-          </Link>
+          </Link> */}
+          <br/>
+          <div className={classes.root}>
+          <Link to ='/viewpathistory'><Button variant="contained" color="primary" disabled={!validateForm()} onClick={onClick}>Login</Button></Link>
+          </div>
+
+
         </form>
          
         

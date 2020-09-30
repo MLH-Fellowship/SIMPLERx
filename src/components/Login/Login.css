@@ -9,13 +9,13 @@
     .Login form {
       margin: 0 auto;
       max-width: 320px;
-      background-color: rgb(46, 43, 43);
-      opacity: 0.8;
+      background-color: rgb(213, 240, 245);
+      opacity: 0.95;
       padding: 40px;
       align-self: center;
       align-content: center;
       justify-content: center;
-      color: white;
+      color: rgb(0, 0, 0);
     }
   }
   

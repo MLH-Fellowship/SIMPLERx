@@ -1,33 +1,41 @@
 import React,{useState} from 'react'
 import './PharmaLogin.css'
-import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
+import { FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import {Link} from 'react-router-dom'
-//import { propTypes } from 'react-bootstrap/esm/Image';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
-export default function Login({sendData}) {
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
+
+export default function PharmaLogin({sendData}) {
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    // const [password, setPassword] = useState("");
+    const classes = useStyles();
     
     function validateForm() {
-      return password.length > 0 && email.length>0;
+      return email.length > 0;
     }
   
     function handleSubmit(event) {
-        event.preventDefault();
-        
+        event.preventDefault();    
     }
-    
-    function handleClick(){
+  
+    function onClick(){
       sendData(email)
     }
-    
-
 
     return (
       <div className="Login">
         <form onSubmit={handleSubmit}>
-        <FormGroup controlId="text" bssize="large">
-            <FormLabel>Pharmacy ID </FormLabel>
+          <FormGroup controlId="email" bsSize="large">
+            <FormLabel>Patient ID: </FormLabel>
             <FormControl
               autoFocus
               type="text"
@@ -36,9 +44,9 @@ export default function Login({sendData}) {
             />
             
           </FormGroup>
-          <br/>
-          <FormGroup controlId="password" bssize="large">
-            <FormLabel style={{marginRight:"19px"}}>Password </FormLabel>
+          {/* <br/>
+          <FormGroup controlId="password" bsSize="large">
+            <FormLabel>Patient ID </FormLabel>
             
             <FormControl
               value={password}
@@ -46,14 +54,19 @@ export default function Login({sendData}) {
               type="password"
             />
           </FormGroup>
-          <br/>
-          <Link to="/showprespharma">
-          <Button block bssize="large" disabled={!validateForm()} type="submit" onClick={handleClick}>
+          <br/> */}
+          {/* <Link to="/patdashboard">
+          <Button block bsSize="large" disabled={!validateForm()} type="submit" onClick={handleClick}>
             Login
           </Button>
-          </Link>
+          </Link> */}
+          <br/>
+          <div className={classes.root}>
+          <Link to ='/showpres'><Button variant="contained" color="primary" disabled={!validateForm()} onClick={onClick}>Login</Button></Link>
+          </div>
+
+
         </form>
-        
          
         
         

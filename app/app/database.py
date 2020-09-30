@@ -97,8 +97,8 @@ def getRecord(PatientID):
                 "History": 1,
                 "_id": 0
                 })
-        for x in res:
-        	return x
+    for x in res:
+    	return x
 
 
 # Test function: getRecord("PA1234")
@@ -112,6 +112,6 @@ def getPrescription(PatientID):
                 "History.Prescription": 1,
                 "_id": 0
                 })
-        for x in res:
-        	return x
+    for x in res:
+    	return x
         

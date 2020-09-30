@@ -1,0 +1,21 @@
+@media all and (min-width: 480px) {
+    .Login {
+      padding: 60px;
+      font-size: 20;
+      color: black;
+      margin: 10%;
+    }
+  
+    .Login form {
+      margin: 0 auto;
+      max-width: 320px;
+      background-color: rgb(213, 240, 245);
+      opacity: 0.95;
+      padding: 40px;
+      align-self: center;
+      align-content: center;
+      justify-content: center;
+      color: rgb(0, 0, 0);
+    }
+  }
+  

@@ -1,0 +1,46 @@
+[
+    {   
+            "Symptoms":"cough",
+            "Notes": "fever",
+            "Test":"Test 2234",
+            "Furthercheckups":"once",
+            "Followupdetails":"24-05-2020",
+            "Precription":[{
+                "name":"Crocin",
+                "dosage":"1-0-1",
+                "duration":"4"
+            }]
+    },
+        
+    {
+            "Symptoms":"fever",
+            "Notes": "Viral fever",
+            "Test":"Test 1111",
+            "Furthercheckups":"None",
+            "Followupdetails":"02-12-2020",
+            "Precription":[{
+                "name":"Paracetamol",
+                "dosage":"1-1-1",
+                "duration":"2"
+            },
+            {
+                "name":"Sinarest",
+                "dosage":"0-1-0",
+                "duration":"7"
+            }]
+    },
+        
+    {
+            "Symptoms":"nausea",
+            "Notes": "allergy",
+            "Test":"Test 2341",
+            "Furthercheckups":"None",
+            "Followupdetails":"04-11-2020",
+            "Precription":[{
+                "name":"Allegra",
+                "dosage":"1-0-0",
+                "duration":"8"
+            }]
+        
+    }
+]

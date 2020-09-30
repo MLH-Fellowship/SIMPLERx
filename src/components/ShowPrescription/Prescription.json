@@ -1,0 +1,26 @@
+[
+    {
+        "PID":"PA1234",
+        
+            "name":"Paracetamol",
+            "dosage":"1-1-1",
+            "duration":"4"
+        
+    },
+    {
+        "PID":"PA3456",
+        
+            "name":"crocin",
+            "dosage":"1-0-1",
+            "duration":"1"
+        
+    },
+    {
+        "PID":"PA6789",
+        
+            "name":"Meftal Spas",
+            "dosage":"1-0-0",
+            "duration":"9"
+       
+    }
+]

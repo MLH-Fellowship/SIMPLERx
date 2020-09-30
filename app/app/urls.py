@@ -20,5 +20,17 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index')
+    path('', views.index, name='index'),
+    path('signin', views.signin, name='signin'),
+    path('signin/', views.signin, name='signin'),
+    path('signup', views.signup, name='signup'),
+    path('signup/', views.signup, name='signup'),
+    path('add_prescription', views.add_prescription, name='add_prescription'),
+    path('add_prescription/', views.add_prescription, name='add_prescription'),
+    path('fetch_history', views.fetch_history, name='fetch_history'),
+    path('fetch_history/', views.fetch_history, name='fetch_history'),
+    path('current_prescription', views.current_prescription, name='current_prescription'),
+    path('current_prescription/', views.current_prescription, name='current_prescription'),
+    path('mark_prescription', views.mark_prescription, name='mark_prescription'),
+    path('mark_prescription/', views.mark_prescription, name='mark_prescription'),
 ]

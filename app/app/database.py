@@ -63,6 +63,7 @@ patientCollection = db["patient"]
 def addPatient(new_patient):
     db.patientCollection.insert_one(new_patient)
 
+
 # Test func: addPatient(json_obj)
 
 
@@ -88,26 +89,29 @@ data_set = {"Name": "MLH", "Prescription": "Crocin",
 
 
 def getRecord(PatientID):
-    for x in patientCollection.find(
+    res= db.patientCollection.find(
             {
                 "_id": PatientID
             },
         {
                 "History": 1,
                 "_id": 0
-                }):
-        return x
+                })
+        for x in res:
+        	return x
 
 
 # Test function: getRecord("PA1234")
 
 def getPrescription(PatientID):
-    for x in patientCollection.find(
+    res= db.patientCollection.find(
             {
                 "_id": PatientID
             },
         {
-                "Prescription": 1,
+                "History.Prescription": 1,
                 "_id": 0
-                }):
-        return x
+                })
+        for x in res:
+        	return x
+        

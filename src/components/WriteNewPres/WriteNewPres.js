@@ -105,7 +105,7 @@ function WriteNewPres({data}) {
   
   return (
     <Container style={{backgroundColor:"white", opacity:"0.9"}}>
-      <h1>Add New Member {data}</h1>
+      
       <form className={classes.root} onSubmit={handleSubmit}>
 
             <TextField 

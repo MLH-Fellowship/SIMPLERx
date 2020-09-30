@@ -28,11 +28,12 @@ Thumbs.db
 /build
 
 # misc
-.DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+.cookie
 
 npm-debug.log*
 yarn-debug.log*

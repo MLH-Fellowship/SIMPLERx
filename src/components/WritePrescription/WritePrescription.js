@@ -95,11 +95,11 @@ function WritePrescription({data}) {
   
   return (
     <Container style={{backgroundColor:"white", opacity:"0.9"}}>
-      <h1>Add New Member {data}</h1>
-      <form className={classes.root} onSubmit={handleSubmit}>
+      
+      <form className={classes.root} onSubmit={handleSubmit} style={{marginTop:"50px", padding:"20px"}}>
             <TextField 
               name="pId"
-              label={data}
+              label="PA1234"
               variant="filled"
               disabled inputProps={{ 'aria-label': 'description' }}
               

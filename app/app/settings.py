@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -50,6 +50,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'app.corsMiddleware.cors_middleware',
+	'corsheaders.middleware.CorsMiddleware'
+]
+CORS_ORIGIN_ALLOW_ALL = True
+ALLOWED_HOSTS = ['*']
+
+CORS_ORIGIN_WHITELIST = [
+    "www.example.com",
+    "http://127.0.0.1:8000",
+    ...
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -79,7 +89,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 username = os.getenv('DB_USERNAME')
 password = os.getenv('DB_PASSWORD')
 db_name = os.getenv('DB_NAME')
-DATABASES = {
+'''DATABASES = {
         'default': {
         'ENGINE': 'djongo',
         'NAME': db_name,
@@ -87,7 +97,7 @@ DATABASES = {
         'host': f'mongodb+srv://{username}:{password}@simplerx.3fs5z.mongodb.net/{db_name}?retryWrites=true&w=majority&ssl=true&ssl_cert_reqs=CERT_NONE'
         }
     }
-}
+}'''
 
 
 # Password validation

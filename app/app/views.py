@@ -49,7 +49,7 @@ def add_prescription(request):
         try:
             if validate_session(request):
                 new_prescription = json.loads(request.body.decode('utf-8'))
-                if new_uid(new_prescription):
+                if not new_uid(new_prescription['_id']):
                     response = HttpResponseBadRequest(
                     content='{"UnknownUIDError": "UID does not exist in database."}',
                     content_type='application/json; charset=utf-8')

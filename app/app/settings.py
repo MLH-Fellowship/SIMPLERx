@@ -51,6 +51,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 	'app.corsMiddleware.cors_middleware',
+	'corsheaders.middleware.CorsMiddleware'
+]
+CORS_ORIGIN_ALLOW_ALL = True
+ALLOWED_HOSTS = ['*']
+
+CORS_ORIGIN_WHITELIST = [
+    "www.example.com",
+    "http://127.0.0.1:8000",
+    ...
 ]
 
 ROOT_URLCONF = 'app.urls'

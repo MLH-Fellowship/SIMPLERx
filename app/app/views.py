@@ -54,7 +54,7 @@ def add_prescription(request):
                     content='{"UnknownUIDError": "UID does not exist in database."}',
                     content_type='application/json; charset=utf-8')
                 else:
-                    db.addRecord(new_prescription)
+                    db.addRecord(new_prescription['_id'], new_prescription['History'])
                     response = HttpResponse(status=HTTPStatus.CREATED)
             else:
                 response = HttpResponse(status=HTTPStatus.FORBIDDEN)

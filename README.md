@@ -6,6 +6,14 @@ What if we told you your pharmacist just needs one ID card to give you all your 
 
 Here's SimpleRx. ✨ All the simplicity, none of the work. 😌
 
+## ⚙️ What it does
+
+At its core, SimpleRx is a centralized health records and prescription management system.
+
+Think of your prescription folder, but on the cloud. Accessible whenever and wherever you want it, just a screen away. No more gaps in medical history because you can't find the papers, everything remains safe and accessible to the doctors on your next visit. 🏥
+
+No need to wait at the pharmacy or look for that prescription when it's time for a refill - they can see your current prescriptions just as soon as you want the medicines to reach your home. 🏠
+
 ## ⚙️ Installation
 ### 🏗️ Building dependencies
 
@@ -28,6 +36,15 @@ $ npm start
 ```
 
 You should be good to go! 🚀
+
+## 🔜 What's next
+
+SimpleRx believes in taking things one step farther.
+
+* Digitizing lab records with OCR and securely storing them on the cloud 🔎
+* Flagging allergies and intelligent drug suggestions 💬
+* Automate pharmacy deliveries and pickup notifications 📦
+* More complex filters to prevent fraud and protect privacy 🔒
 
 ## 🤼 About
 This project was built by [Rohan Rout](https://github.com/routrohan), [Sakshi Rambhia](https://github.com/Sakshi16) and [Ankit Maity](https://github.com/QEDK). 👷

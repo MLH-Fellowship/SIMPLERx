@@ -18,7 +18,8 @@ import Dialog from '@material-ui/core/Dialog';
 //import AddIcon from '@material-ui/icons/Add';
 //import Typography from '@material-ui/core/Typography';
 import { blue } from '@material-ui/core/colors';
-
+//import Logo from '../../Logo.png'
+import Logo2 from '../../Logo2.png'
 
 
 const emails = ['Doctor', 'Patient', 'Pharmacist'];
@@ -125,18 +126,23 @@ export default function NavBar() {
       <nav>
       <ul>
       {/* <Link to="/" style={{float:"left", fontSize:24, fontFamily:"monospace"}}>SimpleRx</Link> */}
-      <div className={classes.root} style={{float:"left"}}>
-      <Link to='/'><Button size="large" variant="outlined" color="black">SimpleRx</Button></Link>
-      </div>
       
-        <Button variant="contained" size="small" color="primary" onClick={handleClickOpen} style={{float:"right", marginRight:"20px ", marginTop: "22px"}}>
+      {/* <div className={classes.root} style={{float:"left"}}>
+      <Link to='/'><Button size="large" variant="outlined" color="black">SimpleRx</Button></Link>
+      </div> */}
+      
+      {/* <Link to='/'><img src={Logo} alt="Logo" style={{width:"100px", height:"50px", float:"right",marginBottom:'20px'}}></img></Link> */}
+
+
+        <Button variant="contained" size="small" color="primary" onClick={handleClickOpen} style={{float:"right", marginRight:"20px ", marginTop: "34px"}}>
           Login
         </Button>
 
-        <a href="https://github.com/MLH-Fellowship/SIMPLERx"><Button variant="contained" size="small"  color="primary" style={{float:"right", marginRight:"20px", marginTop: "8px"}}>
+        <a href="https://github.com/MLH-Fellowship/SIMPLERx"><Button variant="contained" size="small"  color="primary" style={{float:"right", marginRight:"20px", marginTop: "20px"}}>
           Source Code
         </Button></a>
         <SimpleDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
+        <Link to='/'><img src={Logo2} alt="Logo" style={{width:"150px", height:"75px", float:"right",marginBottom:'10px', marginRight:'883px'}}></img></Link>
         </ul>
         </nav>
       </div>

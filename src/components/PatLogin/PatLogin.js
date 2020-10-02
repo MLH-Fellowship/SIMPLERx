@@ -4,7 +4,7 @@ import { FormGroup, FormControl, FormLabel } from "react-bootstrap";
 import {Link} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-
+import axios from 'axios'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,11 +16,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login({sendData}) {
     const [email, setEmail] = useState("");
-    // const [password, setPassword] = useState("");
+    const [password, setPassword] = useState("");
     const classes = useStyles();
-    
+    const [checkNum, setNum] = React.useState(1)
+    const [finans, setAns] = React.useState([]);
+
+
     function validateForm() {
-      return email.length > 0;
+      return email.length > 0 && password.length>0;
     }
   
     function handleSubmit(event) {
@@ -28,14 +31,38 @@ export default function Login({sendData}) {
     }
   
     function onClick(){
-      sendData(email)
+      //sendData(email)
+
+      const finalData = 
+    {
+      "_id":email,
+      "PatientName":"",
+      "Aadhar":"",
+      "Email":"",
+
+      
+       "History":[{   
+          "Symptoms":"",
+          "Notes": "",
+          "Test":"",
+          "Furthercheckups":"",
+          "Followupdetails":"",
+          "Prescription":""}]
+      }
+      axios.post(`http://localhost:8000/fetch_history`, finalData)
+        .then(res=>{
+          res.data === null? alert("Please enter valid Patient ID"):setNum(checkNum+1);
+          //console.log(res.data.History)
+          sendData(email)
+        })
+      
     }
 
     return (
       <div className="Login">
         <form onSubmit={handleSubmit}>
           <FormGroup controlId="email" bsSize="large">
-            <FormLabel>Patient ID: </FormLabel>
+            <FormLabel style={{marginRight:"4px"}}>Patient ID: </FormLabel>
             <FormControl
               autoFocus
               type="text"
@@ -44,9 +71,9 @@ export default function Login({sendData}) {
             />
             
           </FormGroup>
-          {/* <br/>
+          <br/>
           <FormGroup controlId="password" bsSize="large">
-            <FormLabel>Patient ID </FormLabel>
+            <FormLabel>Password: </FormLabel>
             
             <FormControl
               value={password}
@@ -54,7 +81,7 @@ export default function Login({sendData}) {
               type="password"
             />
           </FormGroup>
-          <br/> */}
+          <br/>
           {/* <Link to="/patdashboard">
           <Button block bsSize="large" disabled={!validateForm()} type="submit" onClick={handleClick}>
             Login
@@ -62,7 +89,7 @@ export default function Login({sendData}) {
           </Link> */}
           <br/>
           <div className={classes.root}>
-          <Link to ='/viewpathistory'><Button variant="contained" color="primary" disabled={!validateForm()} onClick={onClick}>Login</Button></Link>
+        <Link to ='/viewpathistory'><Button variant="contained" color="primary" disabled={!validateForm()} onClick={onClick}>Login</Button></Link>
           </div>
 
 

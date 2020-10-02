@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
-//import axios from 'axios'
+import axios from 'axios'
 import {Link} from 'react-router-dom'
 //import Icon from '@material-ui/core/Icon';
 
@@ -33,33 +33,33 @@ function WritePrescription({data}) {
     
     
     const finalData = 
-        {
-          "_id":"PA1234",
-          
-          "record":{   
-            "Symptoms":symptoms,
-            "Notes": notes,
-            "Test":tests,
-            "Furthercheckups":further,
-            "Followupdetails":followup,
-            "Precription":inputFields
-          }
+    {
+      "_id":"PA33",
+      "PatientName":"Patient",
+      "Aadhar":"123456789012",
+      "Email":"patient@gmail.com",
 
-        }
+      
+       "History":[{   
+          "Symptoms":symptoms,
+          "Notes": notes,
+          "Test":tests,
+          "Furthercheckups":further,
+          "Followupdetails":followup,
+          "Prescription":inputFields}]
+      
+}
     
-    // const URL = 'https://69fd6781dab2.ngrok.io/signup'
-    //  axios(URL, {
-    //   method: 'POST',
-    //   headers: {
-    //     'content-type': 'application/json',
-    //   },
-    //   body: finalData
-    // })
-    //   .then(response => {console.log(response.data)})
-    //   .catch(error => {
-    //     throw error;
-    //   });
-     console.log(finalData)
+    
+     axios.post(`http://localhost:8000/fetch_history`, finalData)
+    .then(res=>{
+      //console.log(res.data.History[0].Prescription)
+      console.log(res.data)
+      
+    })
+    
+
+     //console.log(finalData)
      
 
 
@@ -90,20 +90,20 @@ function WritePrescription({data}) {
   const [tests, setTests] = React.useState("");
   const [further, setFurther] = React.useState("");
   const [followup, setFollow] = React.useState("");
-  
+  const [ans,setAns] = React.useState();
   
   
   return (
     <Container style={{backgroundColor:"white", opacity:"0.9"}}>
       
       <form className={classes.root} onSubmit={handleSubmit} style={{marginTop:"50px", padding:"20px"}}>
-            <TextField 
+            {/* <TextField 
               name="pId"
-              label="PA1234"
+              label={data}
               variant="filled"
               disabled inputProps={{ 'aria-label': 'description' }}
               
-            />
+            /> */}
 
             <TextField 
               name="symptoms"
@@ -186,7 +186,7 @@ function WritePrescription({data}) {
           color="primary" 
           type="submit" 
           onClick={handleSubmit}
-        ><Link to='/showpres'>Submit</Link></Button>
+        ><Link to='/'>Submit</Link></Button>
         
       </form>
     </Container>

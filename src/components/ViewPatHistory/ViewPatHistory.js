@@ -1,5 +1,5 @@
 import React from 'react';
-import FinalHistory from '../ViewHistory/FinalHistory.json'
+import FinalHistory2 from '../ViewHistory/FinalHistory2.json'
 import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
@@ -17,6 +17,8 @@ import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Button from '@material-ui/core/Button';
+import axios from 'axios'
+
 
 const useRowStyles = makeStyles({
   root: {
@@ -37,10 +39,14 @@ const useStyles = makeStyles((theme) => ({
 
 function createData(name, calories, fat, carbs, protein, price, pres) {
   var history = [];
-  var j;
-  for(j=0;j<pres.length;j++){
-    history.push(pres[j])
-  }
+  
+  // for(j=0;j<pres.length;j++){
+  //   history.push(pres[j])
+  // }
+  // pres.map((pp=>(
+  //   history.push(pp)
+  // )))
+  price.map((ok=>(ok.Prescription.map(pp=>(history.push(pp))))))
   return {
     name,
     calories,
@@ -48,11 +54,7 @@ function createData(name, calories, fat, carbs, protein, price, pres) {
     carbs,
     protein,
     price,
-    // history: [
-    //   { date: pres.name, customerId: pres.dosage, amount: pres.duration },
-    //   { date: '2020-01-02', customerId: 'Anonymous', amount: '1' },
-    // ],
-    history,
+    history
     
   };
 }
@@ -95,7 +97,7 @@ function Row(props) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.history.map((historyRow) => (
+                  {row.history.map((historyRow=> (
                     <TableRow key={historyRow.name}>
                       <TableCell component="th" scope="row">
                         {historyRow.name}
@@ -106,7 +108,7 @@ function Row(props) {
                         {Math.round(historyRow.amount * row.price * 100) / 100}
                       </TableCell> */}
                     </TableRow>
-                  ))}
+                  )))}
                 </TableBody>
               </Table>
             </Box>
@@ -142,19 +144,77 @@ Row.propTypes = {
 //   createData('Cupcake', '305', '3.7', '67', '4.3', '2.5')
 // ];
 
-const rows = [];
-var i;
-for(i =0; i<FinalHistory.length; i++){
-  rows.push(createData(FinalHistory[i].Symptoms, FinalHistory[i].Notes, FinalHistory[i].Followupdetails,FinalHistory[i].Furthercheckups,FinalHistory[i].Test,"1", FinalHistory[i].Precription))
-}
+// const rows = [];
+// var i;
+// for(i =0; i<FinalHistory2.length; i++){
+//   rows.push(createData(FinalHistory2[i].Symptoms, FinalHistory2[i].Notes, FinalHistory2[i].Followupdetails,FinalHistory2[i].Furthercheckups,FinalHistory2[i].Test,"1", FinalHistory2[i].Precription))
+// }
 
 
-export default function ViewHistory() {
+export default function ViewHistory({patId}) {
+  const [hist, setHist] = React.useState([]);
+  
+  // const [prescription, setPres] = React.useState([])
+  const isFirstRun = React.useRef(true);
 
+
+  const rows = [];
+  var i;
+//   for(i =0; i<FinalHistory2.length; i++){
+//   rows.push(createData(FinalHistory2[i].Symptoms, FinalHistory2[i].Notes, FinalHistory2[i].Followupdetails,FinalHistory2[i].Furthercheckups,FinalHistory2[i].Test,"1", FinalHistory2[i].Precription))
+// }
+
+  hist.map((hi=>(
+    rows.push(createData(hi.Symptoms,hi.Notes, hi.Followupdetails,hi.Furthercheckups,hi.Test,hist, hi.Precription))
+  )))
+
+  console.log(rows)
+
+
+
+
+  React.useEffect(()=>{
+
+    if (isFirstRun.current) {
+      isFirstRun.current = false;
+      return;
+    }
+    const finalData = 
+    {
+      "_id":patId,
+      "PatientName":"",
+      "Aadhar":"",
+      "Email":"",
+
+      
+       "History":[{   
+          "Symptoms":"",
+          "Notes": "",
+          "Test":"",
+          "Furthercheckups":"",
+          "Followupdetails":"",
+          "Prescription":""}]
+      }
+    axios.post(`http://localhost:8000/fetch_history`, finalData)
+      .then(res=>{
+        setHist([...res.data.History])
+        console.log(hist)
+      })
+
+
+      // axios.post(`http://localhost:8000/current_prescription`, finalData)
+      // .then(res=>{
+      //   setPres([...res.data.History.Prescription])
+      //   console.log(prescription)
+      // })
+    
+  })
   
   const classes = useStyles();
   return (
     <>
+    
+    
     <div className={classes.root} style={{float:"left"}}>
           <Link to ='/'>
             <Button variant="contained" color="default" style={{marginRight:"20px", marginTop:"20px"}}>Home</Button>&nbsp;&nbsp;

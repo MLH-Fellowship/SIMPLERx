@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import RemoveIcon from '@material-ui/icons/Remove';
 import AddIcon from '@material-ui/icons/Add';
-//import axios from 'axios'
+import axios from 'axios'
 //import Icon from '@material-ui/core/Icon';
 import {Link} from 'react-router-dom'
 
@@ -23,28 +23,39 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function WriteNewPres({data}) {
+
+
+  var val = "PA"+Math.floor(1000 + Math.random() * 9000);
   const classes = useStyles()
   const [inputFields, setInputFields] = useState([
     { name: '',dosage:'', duration: '' },
   ]);
-
+  const[hist,setHist] = React.useState([])
   const handleSubmit = (e) => {
     e.preventDefault();
     
     
-    const finalData = [
-        {
-            "PatientID":data,
-            "Symptoms":symptoms,
-            "Notes":notes,
-             "Test":tests,
-            "Furthercheckups":further,
-            "Followupdetails":followup,
-            "Prescription":inputFields
+    const finalData = 
+    {
+      "_id":val,
+      "PatientName":name,
+      "Aadhar":aadhar,
+      "Email":email,
 
-        }
-    ]
-    console.log(finalData);
+      
+       "History":[{   
+          "Symptoms":symptoms,
+          "Notes": notes,
+          "Test":tests,
+          "Furthercheckups":further,
+          "Followupdetails":followup,
+          "Prescription":inputFields}]
+      }
+      axios.post(`http://localhost:8000/signup`, finalData)
+      .then(res=>{
+        
+        console.log(res.data)
+      })
     // axios.post(`http://localhost:8000/login`, 
     // { 
     //         "_id":"PA2222",
@@ -105,6 +116,7 @@ function WriteNewPres({data}) {
   
   return (
     <Container style={{backgroundColor:"white", opacity:"0.9"}}>
+    <h1 style={{fontFamily:"sans-serif", fontSize:"25px"}}>ADD NEW PATIENT</h1>
       
       <form className={classes.root} onSubmit={handleSubmit}>
 
@@ -129,9 +141,10 @@ function WriteNewPres({data}) {
             />
             <TextField 
               name="pId"
-              label= "PID"
+              label= {val}
               variant="filled"
               onChange={event => setPid(event.target.value)}
+              disabled inputProps={{ 'aria-label': 'description' }}
             />
 
             <TextField 
@@ -215,7 +228,7 @@ function WriteNewPres({data}) {
           color="primary" 
           type="submit" 
           onClick={handleSubmit}
-        ><Link to='/showpres'>Send</Link></Button>
+        ><Link to='/'>Done</Link></Button>
       </form>
     </Container>
   );

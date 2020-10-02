@@ -19,7 +19,7 @@ import WriteNewPres from './components/WriteNewPres/WriteNewPres'
 import ShowPrescriptionPharma from './components/ShowPrescriptionPharma/ShowPrescriptionPharma'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import ViewPatHistory from './components/ViewPatHistory/ViewPatHistory'
-
+//import ParticleComponent from './PrticleComponent'
 
 
 class App extends React.Component {
@@ -76,7 +76,26 @@ class App extends React.Component {
   return (
     
         <Router>
-          <div className="App" id='particles'>
+        {/* <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%"
+        }}
+      >
+      <ParticleComponent/>
+      <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%"
+          }}
+        > */}
+          <div className="App" >
             
             <NavBar />
             
@@ -97,16 +116,18 @@ class App extends React.Component {
                 <Route path='/patienthistory' component={PatientHistory}/>
                 <Route path='/writepres'><WritePrescription data={this.state.patId}/></Route>
                 <Route path='/showpres'><ShowPrescription data={this.state.presId}/></Route>
-                <Route path='/viewhistory' component={ViewHistory}/>
+                <Route path='/viewhistory'><ViewHistory sendData={this.getPatientLogin}/></Route>
                 <Route path='/writenewpres' component={WriteNewPres}/>
-                <Route path='/showprespharma'><ShowPrescriptionPharma data={this.state.pharmaId} /></Route>
-                <Route path='/viewpathistory'><ViewPatHistory /></Route>
+                <Route path='/showprespharma'><ShowPrescriptionPharma sendData={this.getPatientLogin}/></Route>
+                <Route path='/viewpathistory'><ViewPatHistory patId={this.state.patId}/></Route>
                
               </Switch>
               
             </div>
             
           </div>
+          {/* </div>
+          </div> */}
         </Router>
     
   );

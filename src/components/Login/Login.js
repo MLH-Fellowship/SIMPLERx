@@ -44,7 +44,7 @@ export default function Login({sendData}) {
             <FormLabel style={{marginRight:"5px"}}>Doctor ID </FormLabel>
             <FormControl
               autoFocus
-              type="text"
+              type="email"
               value={email}
               onChange={e => setEmail(e.target.value)}
             />

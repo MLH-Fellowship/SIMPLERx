@@ -40,11 +40,12 @@ function SimpleCard(){
             <CardContent>
               
               <Typography variant="h3" component="h2">
-                Forget your papers
+                <strong>Forget your papers</strong>
               </Typography>
               <Typography className={classes.pos} color="textSecondary">
               
               </Typography>
+              <br/>
               <Typography variant="h5" component="p">
               Prescriptions are now a thing of the past. Here's something simpler(x). 
                 <br /><br/>

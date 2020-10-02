@@ -1,5 +1,27 @@
 [
-    
+    {   
+            "Symptoms":"cough",
+            "Notes": "fever",
+            "Test":"Test 2234",
+            "Furthercheckups":"once",
+            "Followupdetails":"24-05-2020",
+            "Precription":[{
+                "name":"Paracetamol",
+                "dosage":"1-1-1",
+                "duration":"4 days"
+            },
+            {
+                "name":"Crocin",
+                "dosage":"1-0-1",
+                "duration":"1 day"
+            },
+            {
+                "name":"Meftal Spas",
+                "dosage":"1-0-0",
+                "duration":"9 days"
+            }
+        ]
+    },
         
     {
             "Symptoms":"fever",

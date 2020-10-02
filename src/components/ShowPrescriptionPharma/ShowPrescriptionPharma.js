@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useState,useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import Prescription from '../ShowPrescription/Prescription.json'
 import { makeStyles } from '@material-ui/core/styles';
@@ -9,6 +9,10 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button'
+import axios from 'axios'
+
+
 
 const useStyles = makeStyles({
   table: {
@@ -19,41 +23,105 @@ const useStyles = makeStyles({
 
 
 
-export default function ShowPrescriptionPharma({data}) {
+export default function ShowPrescriptionPharma({patId,patient}) {
     const classes = useStyles();
-
-    useEffect(()=>{
-        console.log("YAAAY")
-    })
-
+    const [presData, setPres] = React.useState([{name:"", dosage:"", duration:""}])
     
+    // useEffect(()=>{
+    //   const finalData = 
+    //   {
+    //     "_id":patId,
+    //     "PatientName":"",
+    //     "Aadhar":"",
+    //     "Email":"",
+  
+        
+    //      "History":[{   
+    //         "Symptoms":"",
+    //         "Notes": "",
+    //         "Test":"",
+    //         "Furthercheckups":"",
+    //         "Followupdetails":"",
+    //         "Prescription":""}]
+    //     }
+      
+    //     axios.post(`http://localhost:8000/current_prescription`, finalData)
+    //       .then(res=>{
+    //         setPres(res.data.History[0].Prescription)
+    //         console.log(presData)
+    //       })
+          
+    // })
 
+    const finalData = 
+      {
+        "_id":patId,
+        "PatientName":"",
+        "Aadhar":"",
+        "Email":"",
+  
+        
+         "History":[{   
+            "Symptoms":"",
+            "Notes": "",
+            "Test":"",
+            "Furthercheckups":"",
+            "Followupdetails":"",
+            "Prescription":""}]
+        }
+        
+        // axios.post(`http://localhost:8000/current_prescription`, finalData)
+        //   .then(res=>{
+        //     console.log(res.data.History[0].Prescription)
+            
+        //   })
+          
+
+
+  // var oo = '{"name":"rohan}'
+  // var pp = JSON.parse(oo)
+  //console.log(pp)
+     
+  //console.log(patId[0])  
+  //chroconsole.log(Prescription[0])
+  //var obj = JSON.parse(patId)
+  console.log(patId)
   return (
       <div>
-      <h2>
-             Hello {data}
-         </h2>
+    {/* <h2>{patId.map((pat=>(pat.dosage)))}</h2>   */}
+    {/* <h2>{patId[0].name}</h2> */}
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Patient ID</TableCell>
+            <TableCell>Patient ID : {patient}</TableCell>
             <TableCell align="right">Medicine</TableCell>
             <TableCell align="right">Dosage</TableCell>
-            <TableCell align="right">Duration(day(s))</TableCell>
+            <TableCell align="right">Duration</TableCell>
             
             
           </TableRow>
         </TableHead>
         <TableBody>
-          {Prescription.map((row) => (
+          {/* {Prescription.map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
-                {row.PID}
+                <p></p>
               </TableCell>
                 <TableCell align="right">{row.name}</TableCell>
                 <TableCell align="right">{row.dosage}</TableCell>
-                <TableCell align="right">{row.duration}</TableCell>
+                <TableCell align="right">{row.duration} days</TableCell>
+              
+            </TableRow>
+          ))} */}
+          {patId.map((row) => (
+            <TableRow key={row.name}>
+              <TableCell component="th" scope="row">
+                <p></p>
+              </TableCell>
+                <TableCell align="right">{row.name}</TableCell>
+                <TableCell align="right">{row.dosage}</TableCell>
+                <TableCell align="right">{row.duration} days</TableCell>
               
             </TableRow>
           ))}
@@ -62,9 +130,8 @@ export default function ShowPrescriptionPharma({data}) {
     </TableContainer>
     <br/>
         <Link to = '/'>
-             <button>Home</button>
+            <Button color='primary' variant='contained'>Home</Button>
          </Link>
-         
     </div>
     
   );

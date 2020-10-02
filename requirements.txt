@@ -20,3 +20,5 @@ pyxdg==0.25
 SecretStorage==2.3.1
 six==1.12.0
 sqlparse==0.2.4
+gunicorn==19.4.5
+dj-database-url==0.4.0

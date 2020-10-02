@@ -32,7 +32,7 @@ export default function ShowPrescription({data}) {
             <TableCell>Patient ID: PA1234</TableCell>
             <TableCell align="right">Medicines</TableCell>
             <TableCell align="right">Dosage</TableCell>
-            <TableCell align="right">Duration(day(s))</TableCell>
+            <TableCell align="right">Duration</TableCell>
             
             
           </TableRow>

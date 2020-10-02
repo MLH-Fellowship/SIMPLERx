@@ -10,7 +10,7 @@ import Box from '@material-ui/core/Box';
 import ViewHistory from '../ViewHistory/ViewHistory'
 import WriteNewPres from '../WriteNewPres/WriteNewPres'
 import Button from '@material-ui/core/Button';
-
+import axios from 'axios'
 import TextField from '@material-ui/core/TextField';
 
 function TabPanel(props) {
@@ -71,7 +71,8 @@ export default function DocDashboard({sendData}) {
   const [value, setValue] = React.useState(0);
   const classesform = useStylesform();
   const [patId, setPatId] = React.useState("");
-  const [checkNum, setNum] = React.useState(0)
+  const [checkNum, setNum] = React.useState(0);
+  const [histData, setHistData] = React.useState([])
   
 
   const handleChange = (event, newValue) => {
@@ -81,8 +82,32 @@ export default function DocDashboard({sendData}) {
   
   
   function handleClick(){
-    setNum(checkNum+1)
-    sendData(patId)
+    const finalData = 
+    {
+      "_id":patId,
+      "PatientName":"",
+      "Aadhar":"",
+      "Email":"",
+
+      
+       "History":[{   
+          "Symptoms":"",
+          "Notes": "",
+          "Test":"",
+          "Furthercheckups":"",
+          "Followupdetails":"",
+          "Prescription":""}]
+      }
+    axios.post(`http://localhost:8000/fetch_history`, finalData)
+      .then(res=>{
+        console.log(res.data)
+        res.data === null?alert("Enter Correct Patient ID"):setNum(checkNum+1)
+        setHistData([...res.data.History])
+      })
+
+
+    // setNum(checkNum+1)
+    //sendData(patId)
   }
   
   return (
@@ -101,7 +126,7 @@ export default function DocDashboard({sendData}) {
         <TextField id="outlined-basic" label="Patient ID" variant="outlined" style={{float:"left"}} onChange={e=>setPatId(e.target.value)} />
         <Button color="primary" variant="contained" size="large" style={{float:"left"}} onClick={handleClick}>Submit</Button>
         </form><br/><br/><br/><br/><br/>
-        {patId==="PA1234" && checkNum>0?<ViewHistory/>:null}
+        {checkNum>0?<ViewHistory patId={patId} histo={histData}/>:null}
         
       </TabPanel>
       <TabPanel value={value} index={1}>

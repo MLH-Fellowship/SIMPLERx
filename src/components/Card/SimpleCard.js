@@ -40,7 +40,7 @@ function SimpleCard(){
             <CardContent>
               
               <Typography variant="h3" component="h2">
-                <strong>Forget your papers</strong>
+                <strong>Forget your papers. 📝</strong>
               </Typography>
               <Typography className={classes.pos} color="textSecondary">
               
@@ -49,7 +49,7 @@ function SimpleCard(){
               <Typography variant="h5" component="p">
               Prescriptions are now a thing of the past. Here's something simpler(x). 
                 <br /><br/>
-                To get started, click on Login
+                
                 {/* {'"a benevolent smile"'} */}
               </Typography>
             </CardContent>

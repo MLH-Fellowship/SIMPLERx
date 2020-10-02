@@ -127,9 +127,9 @@ export default function NavBar() {
       <ul>
       {/* <Link to="/" style={{float:"left", fontSize:24, fontFamily:"monospace"}}>SimpleRx</Link> */}
       
-      {/* <div className={classes.root} style={{float:"left"}}>
-      <Link to='/'><Button size="large" variant="outlined" color="black">SimpleRx</Button></Link>
-      </div> */}
+      <div className={classes.root} style={{float:"left"}}>
+      <Link to='/'><Button size="large" variant="outlined" color="black" style={{width:"140px", height:"60px", fontSize:"23px", letterSpacing:"2px"}}>SimpleRx</Button></Link>
+      </div>
       
       {/* <Link to='/'><img src={Logo} alt="Logo" style={{width:"100px", height:"50px", float:"right",marginBottom:'20px'}}></img></Link> */}
 
@@ -142,7 +142,7 @@ export default function NavBar() {
           Source Code
         </Button></a>
         <SimpleDialog selectedValue={selectedValue} open={open} onClose={handleClose} />
-        <Link to='/'><img src={Logo2} alt="Logo" style={{width:"150px", height:"75px", float:"right",marginBottom:'10px', marginRight:'883px'}}></img></Link>
+        {/* <Link to='/'><img src={Logo2} alt="Logo" style={{width:"150px", height:"75px", float:"right",marginBottom:'10px', marginRight:'883px'}}></img></Link> */}
         </ul>
         </nav>
       </div>

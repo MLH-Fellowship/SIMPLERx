@@ -121,7 +121,7 @@ export default function ShowPrescriptionPharma({patId,patient}) {
               </TableCell>
                 <TableCell align="right">{row.name}</TableCell>
                 <TableCell align="right">{row.dosage}</TableCell>
-                <TableCell align="right">{row.duration} days</TableCell>
+                <TableCell align="right">{row.duration}</TableCell>
               
             </TableRow>
           ))}
